@@ -1,6 +1,6 @@
 {
   "name": "runow",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "main": "index.js",
   "bin": {
@@ -14,11 +14,12 @@
   "keywords": [],
   "author": "shulk",
   "license": "MIT",
+  "homepage": "https://github.com/runowjs/runow#readme",
   "repository": {
     "type": "git",
     "url": "https://github.com/runowjs/runow.git"
   },
-  "description": "create an app that can run now!",
+  "description": "Create a javascript app that can run now! It's quick.",
   "dependencies": {
     "@types/chalk": "^2.2.4",
     "@types/inquirer": "^9.0.7",
