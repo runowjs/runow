@@ -4,7 +4,7 @@ import chalk from 'chalk';
 import inquirer from 'inquirer';
 
 async function run() {
-  console.log(chalk.green.bold('Welcome to runow CLI!'));
+  console.log(chalk.green.bold('Welcome to use Runow!'));
 
   const { framework } = await inquirer.prompt<{ framework: string }>([
     {
@@ -16,12 +16,12 @@ async function run() {
   ]);
 
   switch (framework) {
-    case 'React':
-      console.log(chalk.blue`creating a react app`);
-      break;
+    // case 'React':
+    //   console.log(chalk.blue`creating a react app`);
+    //   break;
 
     default:
-      console.log(chalk.red('Invalid selection'));
+      console.log(chalk.bgBlue('Coming soon!'));
       process.exit(0);
   }
 }
