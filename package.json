@@ -13,7 +13,11 @@
   },
   "keywords": [],
   "author": "shulk",
-  "license": "ISC",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/runowjs/runow.git"
+  },
   "description": "create an app that can run now!",
   "dependencies": {
     "@types/chalk": "^2.2.4",
