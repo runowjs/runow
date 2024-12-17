@@ -1,6 +1,6 @@
 # Runow
 
-> Create a javascript app that can run now! It's quick.
+> Create a javascript app and run now! It's quick.
 
 
 With NPM

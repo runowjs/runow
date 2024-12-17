@@ -19,7 +19,7 @@
     "type": "git",
     "url": "https://github.com/runowjs/runow.git"
   },
-  "description": "Create a javascript app that can run now! It's quick.",
+  "description": "Create a javascript app and run now! It's quick.",
   "dependencies": {
     "@types/chalk": "^2.2.4",
     "@types/inquirer": "^9.0.7",
