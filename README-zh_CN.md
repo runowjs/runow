@@ -21,7 +21,9 @@
 $ npm create runow@latest
 ```
 
-然后按提示操作，也可以使用额外参数快速创建！
+然后按提示操作!
+
+您还可以通过其他命令行选项直接指定项目名称和要使用的模板。例如，要搭建 React + Typescript 项目的基架，请运行：
 
 ```bash
 npm create runow@latest my-app --template react-ts

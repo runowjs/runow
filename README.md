@@ -22,6 +22,8 @@ $ npm create runow@latest
 
 Then follow the prompts!
 
+You can also directly specify the project name and the template you want to use via additional command line options. For example, to scaffold a React + Typescript project, run:
+
 ```bash
 npm create runow@latest my-app --template react-ts
 ```

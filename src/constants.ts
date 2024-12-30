@@ -1,4 +1,4 @@
-import { Framework } from './types';
+import { Framework, Template } from './types';
 
 export const HELP_MESSAGE = `\
 Usage: create-runow [OPTION]... [DIRECTORY]
@@ -37,4 +37,10 @@ export const FRAMEWORKS: Framework[] = [
   },
 ];
 
-export const TEMPLATES: string[] = [];
+export const TEMPLATES: Template[] = [
+  {
+    name: 'react-ts',
+    display: 'React + TypeScript',
+    framework: 'react'
+  }
+];

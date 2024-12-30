@@ -7,7 +7,8 @@ import colors, { reset } from 'picocolors';
 import prompts from 'prompts';
 import { FRAMEWORKS, HELP_MESSAGE, TEMPLATES } from './constants';
 import { Framework } from './types';
-import { formatDir, isEmpty } from './utils';
+import { emptyDir, formatDir, isEmpty } from './utils';
+import { fileURLToPath } from 'node:url';
 
 const { blue, red, green } = colors;
 
@@ -55,7 +56,7 @@ async function run() {
       [
         {
           type: argvDir ? null : 'text',
-          name: 'packageName',
+          name: 'projectName',
           message: reset('Project name:'),
           initial: defaultDir,
           onState: (state) => {
@@ -98,11 +99,11 @@ async function run() {
         },
         {
           type:
-            argvTemplate && TEMPLATES.includes(argvTemplate) ? null : 'select',
+            argvTemplate && TEMPLATES.some(t => t.name === argvTemplate) ? null : 'select',
           name: 'framework',
           message:
             typeof argvTemplate === 'string' &&
-            !TEMPLATES.includes(argvTemplate)
+            !TEMPLATES.some(t => t.name === argvTemplate)
               ? reset(
                   `"${argvTemplate}" isn't a valid template. Please choose from below: `,
                 )
@@ -120,7 +121,15 @@ async function run() {
             typeof framework === 'object' ? 'select' : null,
           name: 'template',
           message: reset('Select a template:'),
-          choices: (framework: Framework) => [],
+          choices: (framework: Framework) =>
+            TEMPLATES.filter((f) => f.framework === framework.name).map(
+              (template) => {
+                return {
+                  title: blue(template.display || template.name),
+                  value: template.name,
+                };
+              },
+            ),
         },
       ],
       {
@@ -129,14 +138,30 @@ async function run() {
         },
       },
     );
-  } catch (e) {
-    console.log(e);
+  } catch (e: any) {
+    console.log(e.message);
     return;
   }
 
   const { framework, overwrite, template } = result;
 
-  console.log(framework, overwrite, template);
+  const root = path.join(cwd, targetDir)
+
+  if (overwrite === 'yes') {
+    emptyDir(root)
+  } else if (!fs.existsSync(root)) {
+    fs.mkdirSync(root, { recursive: true })
+  }
+
+  const templateName = template || argvTemplate
+
+  const templateDir = path.resolve(
+    fileURLToPath(import.meta.url),
+    '../..',
+    templateName,
+  )
+
+  console.log(templateName, templateDir);
 }
 
 run().catch((e) => {
