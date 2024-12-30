@@ -3,30 +3,31 @@
 
 # Runow
 
-Create a javascript app and run now! It's quick.
+快速创建JavaScript应用且立即运行！
 
-[Docs](https://runow.dev/) •
+[文档](https://runow.dev/) •
 [NPM](https://www.npmjs.com/package/runow) •
-[Demos](https://runow.dev/demos) •
-[简体中文](https://github.com/runowjs/runow/blob/main/README-zh_CN.md)
+[示例](https://runow.dev/demos) •
+[English](https://github.com/runowjs/runow/blob/main/README.md)
 
-### [_Getting Started!_](https://runow.dev/guide/getting-started)
+### [_快速开始!_](https://runow.dev/guide/getting-started)
 </div>
 
-## Started
 
-With NPM
+## 开始
+
+使用 NPM
 ```bash
 $ npm create runow@latest
 ```
 
-Then follow the prompts!
+然后按提示操作，也可以使用额外参数快速创建！
 
 ```bash
 npm create runow@latest my-app --template react-ts
 ```
 
-## Templates
+## 模板
 
 - [ ] Vanilla
 - [x] React
