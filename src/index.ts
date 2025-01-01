@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+import spawn from 'cross-spawn';
 import degit from 'degit';
 import minimist from 'minimist';
 import * as fs from 'node:fs';
@@ -169,7 +170,7 @@ async function run() {
     await emitter.clone(root);
     spinner.succeed('Download complete!');
     console.log(green(`Project path: ${root}`));
-    process.exit(0);
+    // process.exit(0);
   } catch (error: any) {
     spinner.fail('Download failed!');
 
@@ -194,6 +195,25 @@ async function run() {
       console.error(red('✖') + ` An unexpected error occurred: ${msg}`);
     }
     process.exit(1);
+  }
+
+  try {
+    console.log(`Running npm install...`);
+
+    const install = spawn('npm', ['install'], {
+      cwd: targetDir,
+      stdio: 'inherit',
+    });
+
+    install.on('close', (code: any) => {
+      if (code === 0) {
+        console.log(`npm install completed successfully.`);
+      } else {
+        console.error(`npm install failed with exit code ${code}`);
+      }
+    });
+  } catch (error) {
+    console.error('Error running npm install:', error);
   }
 }
 

@@ -25,6 +25,7 @@
   "description": "Create a javascript app and run now! It's quick.",
   "dependencies": {
     "@types/node": "^22.10.2",
+    "cross-spawn": "^7.0.6",
     "degit": "^2.8.4",
     "minimist": "^1.2.8",
     "ora": "^8.1.1",
