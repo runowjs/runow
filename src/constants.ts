@@ -1,4 +1,4 @@
-import { Framework, Template } from './types';
+import { Framework } from './types';
 
 export const HELP_MESSAGE = `\
 Usage: create-runow [OPTION]... [DIRECTORY]
@@ -14,38 +14,44 @@ export const FRAMEWORKS: Framework[] = [
   {
     name: 'vanilla',
     display: 'Vanilla',
+    templates: [],
   },
   {
     name: 'react',
     display: 'React',
+    templates: [
+      {
+        name: 'react-ts',
+        display: 'React + TypeScript',
+      },
+      {
+        name: 'react-nextjs-nextui',
+        display: 'React + Next.js + NextUI',
+      },
+    ],
   },
   {
     name: 'vue',
     display: 'Vue',
+    templates: [],
   },
   {
     name: 'angular',
     display: 'Angular',
+    templates: [],
   },
   {
     name: 'solid',
     display: 'Solid',
+    templates: [],
   },
   {
     name: 'svelte',
     display: 'Svelte',
+    templates: [],
   },
 ];
 
-export const TEMPLATES: Template[] = [
-  {
-    name: 'react-ts',
-    display: 'React + TypeScript',
-    framework: 'react'
-  },
-  {
-    name: 'react-nextjs-nextui',
-    display: 'React + Next.js + NextUI',
-    framework: 'react'
-  }
-];
+export const TEMPLATES: string[] = FRAMEWORKS.map((f) =>
+  f.templates.map((t) => t.name),
+).reduce((a, b) => a.concat(b));

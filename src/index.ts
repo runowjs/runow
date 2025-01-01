@@ -94,13 +94,11 @@ async function run() {
         },
         {
           type:
-            argvTemplate && TEMPLATES.some((t) => t.name === argvTemplate)
-              ? null
-              : 'select',
+            argvTemplate && TEMPLATES.includes(argvTemplate) ? null : 'select',
           name: 'framework',
           message:
             typeof argvTemplate === 'string' &&
-            !TEMPLATES.some((t) => t.name === argvTemplate)
+            !TEMPLATES.includes(argvTemplate)
               ? reset(
                   `"${argvTemplate}" isn't a valid template. Please choose from below: `,
                 )
@@ -119,14 +117,12 @@ async function run() {
           name: 'template',
           message: reset('Select a template:'),
           choices: (framework: Framework) =>
-            TEMPLATES.filter((f) => f.framework === framework.name).map(
-              (template) => {
-                return {
-                  title: blue(template.display || template.name),
-                  value: template.name,
-                };
-              },
-            ),
+            framework.templates.map((template) => {
+              return {
+                title: blue(template.display || template.name),
+                value: template.name,
+              };
+            }),
         },
       ],
       {
@@ -151,8 +147,8 @@ async function run() {
   const templateName = template || argvTemplate;
 
   const repo =
-    'https://github.com/runowjs/templates/main/tree/' + templateName.replace('-', '/'); // react-ts => react/ts
-
+    'https://github.com/runowjs/templates/main/tree/' +
+    templateName.replace('-', '/'); // react-ts => react/ts
 
   const spinner = ora(
     `Starting downloading ${templateName} template...`,
