@@ -2,6 +2,9 @@
   "name": "runow",
   "version": "0.0.2",
   "type": "module",
+  "engines": {
+    "node": "^18.0.0 || ^20.0.0 || >=22.0.0"
+  },
   "main": "index.js",
   "bin": {
     "runow": "./index.js",
@@ -22,13 +25,16 @@
   "description": "Create a javascript app and run now! It's quick.",
   "dependencies": {
     "@types/node": "^22.10.2",
+    "degit": "^2.8.4",
     "minimist": "^1.2.8",
+    "ora": "^8.1.1",
     "picocolors": "^1.1.1",
     "prompts": "^2.4.2",
     "shelljs": "^0.8.5",
     "typescript": "^5.7.2"
   },
   "devDependencies": {
+    "@types/degit": "^2.8.6",
     "@types/minimist": "^1.2.5",
     "@types/prompts": "^2.4.9",
     "prettier": "^3.4.2",

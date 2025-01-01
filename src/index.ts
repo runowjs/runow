@@ -1,14 +1,15 @@
 #!/usr/bin/env node
 
+import degit from 'degit';
 import minimist from 'minimist';
 import * as fs from 'node:fs';
 import path from 'node:path';
+import ora from 'ora';
 import colors, { reset } from 'picocolors';
 import prompts from 'prompts';
 import { FRAMEWORKS, HELP_MESSAGE, TEMPLATES } from './constants';
 import { Framework } from './types';
-import { emptyDir, formatDir, isEmpty } from './utils';
-import { fileURLToPath } from 'node:url';
+import { formatDir, isEmpty, removeDir } from './utils';
 
 const { blue, red, green } = colors;
 
@@ -40,8 +41,6 @@ async function run() {
   }
 
   let targetDir = argvDir || defaultDir;
-
-  const getProjectName = () => path.basename(path.resolve(targetDir));
 
   let result: prompts.Answers<
     'projectName' | 'overwrite' | 'template' | 'framework'
@@ -82,10 +81,6 @@ async function run() {
               title: 'Remove existing files and continue',
               value: 'yes',
             },
-            {
-              title: 'Ignore files and continue',
-              value: 'ignore',
-            },
           ],
         },
         {
@@ -99,11 +94,13 @@ async function run() {
         },
         {
           type:
-            argvTemplate && TEMPLATES.some(t => t.name === argvTemplate) ? null : 'select',
+            argvTemplate && TEMPLATES.some((t) => t.name === argvTemplate)
+              ? null
+              : 'select',
           name: 'framework',
           message:
             typeof argvTemplate === 'string' &&
-            !TEMPLATES.some(t => t.name === argvTemplate)
+            !TEMPLATES.some((t) => t.name === argvTemplate)
               ? reset(
                   `"${argvTemplate}" isn't a valid template. Please choose from below: `,
                 )
@@ -143,25 +140,65 @@ async function run() {
     return;
   }
 
-  const { framework, overwrite, template } = result;
+  const { overwrite, template } = result;
 
-  const root = path.join(cwd, targetDir)
+  const root = path.join(cwd, targetDir);
 
   if (overwrite === 'yes') {
-    emptyDir(root)
-  } else if (!fs.existsSync(root)) {
-    fs.mkdirSync(root, { recursive: true })
+    removeDir(root);
   }
 
-  const templateName = template || argvTemplate
+  const templateName = template || argvTemplate;
 
-  const templateDir = path.resolve(
-    fileURLToPath(import.meta.url),
-    '../..',
-    templateName,
-  )
+  const repo =
+    'https://github.com/runowjs/templates/main/tree/' + templateName.replace('-', '/'); // react-ts => react/ts
 
-  console.log(templateName, templateDir);
+
+  const spinner = ora(
+    `Starting downloading ${templateName} template...`,
+  ).start();
+
+  const emitter = degit(repo, {
+    cache: false,
+    force: true,
+    verbose: true,
+    mode: 'git',
+  });
+
+  emitter.on('info', (info) => {
+    spinner.text = info.message;
+  });
+
+  try {
+    await emitter.clone(root);
+    spinner.succeed('Download complete!');
+    console.log(green(`Project path: ${root}`));
+    process.exit(0);
+  } catch (error: any) {
+    spinner.fail('Download failed!');
+
+    const msg = error.message;
+
+    if (msg.includes('ENOTFOUND')) {
+      console.log(
+        red('Network error:') +
+          ' Unable to reach the server. Check your internet connection.',
+      );
+    } else if (msg.includes('404')) {
+      console.log(
+        red('Repository not found:') +
+          ' Verify the repository URL and try again.',
+      );
+    } else if (msg.includes('403')) {
+      console.log(
+        red('Access denied:') +
+          ' You might not have permission to access this repository.',
+      );
+    } else {
+      console.error(red('✖') + ` An unexpected error occurred: ${msg}`);
+    }
+    process.exit(1);
+  }
 }
 
 run().catch((e) => {

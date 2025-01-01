@@ -42,5 +42,10 @@ export const TEMPLATES: Template[] = [
     name: 'react-ts',
     display: 'React + TypeScript',
     framework: 'react'
+  },
+  {
+    name: 'react-nextjs-nextui',
+    display: 'React + Next.js + NextUI',
+    framework: 'react'
   }
 ];
