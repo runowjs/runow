@@ -2,21 +2,20 @@
   "name": "create-runow",
   "version": "0.0.4",
   "type": "module",
+  "author": "shulk",
+  "license": "MIT",
   "engines": {
     "node": "^18.0.0 || ^20.0.0 || >=22.0.0"
   },
-  "main": "index.js",
   "bin": {
-    "runow": "./index.js",
-    "rn": "./index.js"
+    "runow": "index.js",
+    "rn": "index.js"
   },
   "scripts": {
     "dev": "unbuild --stub",
     "build": "unbuild"
   },
   "keywords": [],
-  "author": "shulk",
-  "license": "MIT",
   "homepage": "https://github.com/runowjs/runow#readme",
   "repository": {
     "type": "git",
