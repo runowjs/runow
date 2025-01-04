@@ -6,8 +6,8 @@
 Create a javascript app and run now! It's quick.
 
 [Docs](https://runow.dev/) •
-[NPM](https://www.npmjs.com/package/runow) •
-[Demos](https://runow.dev/demos) •
+[NPM](https://www.npmjs.com/package/create-runow) •
+[Demos](https://demo.runow.dev) •
 [简体中文](https://github.com/runowjs/runow/blob/main/README-zh_CN.md)
 
 ### [_Getting Started!_](https://runow.dev/guide/getting-started)
@@ -15,7 +15,6 @@ Create a javascript app and run now! It's quick.
 
 ## Started
 
-With NPM
 ```bash
 $ npm create runow@latest
 ```
@@ -24,17 +23,34 @@ Then follow the prompts!
 
 You can also directly specify the project name and the template you want to use via additional command line options. For example, to scaffold a React + Typescript project, run:
 
+With NPM
 ```bash
-npm create runow@latest my-app --template react-ts
+# npm 7+, extra double-dash is needed:
+npm create runow@latest my-app -- --template react-ts
+```
+
+With Yarn
+```bash
+yarn create runow your-app-name --template react-ts
+```
+
+With PNPM
+```bash
+pnpm create runow your-app-name --template react-ts
+```
+
+With Bun
+```bash
+bun create runow your-app-name --template react-ts
 ```
 
 ## Templates
 
-- [ ] Vanilla
 - [x] React
 - [ ] Vue
 - [ ] Angular
 - [ ] Svelte
 - [ ] Solid
+- [ ] Vanilla
 
 ...
