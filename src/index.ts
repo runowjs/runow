@@ -29,7 +29,7 @@ const argv = minimist<{
 
 const cwd = process.cwd();
 
-const defaultDir = 'runow-project ';
+const defaultDir = 'runow-project';
 
 async function run() {
   // app target dir
@@ -141,6 +141,9 @@ async function run() {
 
   const root = path.join(cwd, targetDir);
 
+  const templateDir = path.relative(cwd, targetDir);
+
+  // remove target dir
   if (overwrite === 'yes') {
     removeDir(root);
   }
@@ -148,18 +151,16 @@ async function run() {
   const templateName = template || argvTemplate;
 
   const repo =
-    'https://github.com/runowjs/templates/main/tree/' +
-    templateName.replace('-', '/'); // react-ts => react/ts
+    'https://github.com/runowjs/templates/' + templateName.replace('-', '/'); // react-ts => react/ts
 
   const spinner = ora(
-    `Starting downloading ${templateName} template...`,
+    `Cloning ${templateName} template into ${templateDir}...`,
   ).start();
 
   const emitter = degit(repo, {
     cache: false,
     force: true,
     verbose: true,
-    mode: 'git',
   });
 
   emitter.on('info', (info) => {
@@ -167,53 +168,52 @@ async function run() {
   });
 
   try {
-    await emitter.clone(root);
+    await emitter.clone(templateDir);
+
     spinner.succeed('Download complete!');
-    console.log(green(`Project path: ${root}`));
-    // process.exit(0);
-  } catch (error: any) {
-    spinner.fail('Download failed!');
 
-    const msg = error.message;
-
-    if (msg.includes('ENOTFOUND')) {
-      console.log(
-        red('Network error:') +
-          ' Unable to reach the server. Check your internet connection.',
-      );
-    } else if (msg.includes('404')) {
-      console.log(
-        red('Repository not found:') +
-          ' Verify the repository URL and try again.',
-      );
-    } else if (msg.includes('403')) {
-      console.log(
-        red('Access denied:') +
-          ' You might not have permission to access this repository.',
-      );
-    } else {
-      console.error(red('✖') + ` An unexpected error occurred: ${msg}`);
-    }
-    process.exit(1);
-  }
-
-  try {
-    console.log(`Running npm install...`);
+    spinner.text = 'Installing dependencies...';
 
     const install = spawn('npm', ['install'], {
       cwd: targetDir,
-      stdio: 'inherit',
+      stdio: 'pipe',
+      shell: true,
     });
 
-    install.on('close', (code: any) => {
+    install.stdout?.on('data', (data) => {
+      spinner.text = `Installing: ${data.toString().trim()}`;
+    });
+
+    install.stderr?.on('data', (data) => {
+      spinner.text = `Error: ${data.toString().trim()}`;
+    });
+
+    install.on('close', (code) => {
       if (code === 0) {
-        console.log(`npm install completed successfully.`);
+        spinner.succeed('Dependencies installed successfully!');
+        const cdProjectName = path.relative(cwd, root);
+        console.log(`\nDone. Now run:\n`);
+        if (root !== cwd) {
+          console.log(
+            green(
+              `cd ${
+                cdProjectName.includes(' ')
+                  ? `"${cdProjectName}"`
+                  : cdProjectName
+              }`,
+            ),
+          );
+        }
+        console.log(green('npm run dev\n'));
+        process.exit(0);
       } else {
-        console.error(`npm install failed with exit code ${code}`);
+        spinner.fail(`Failed to install dependencies (exit code: ${code})`);
+        process.exit(1);
       }
     });
-  } catch (error) {
-    console.error('Error running npm install:', error);
+  } catch (error: any) {
+    spinner.fail(`Error occurred: ${error.message}`);
+    process.exit(1);
   }
 }
 
