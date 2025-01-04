@@ -1,5 +1,5 @@
 {
-  "name": "runow",
+  "name": "create-runow",
   "version": "0.0.5",
   "type": "module",
   "author": "shulk",
@@ -19,7 +19,7 @@
     "dev": "unbuild --stub",
     "build": "unbuild"
   },
-  "keywords": [],
+  "keywords": ["runow", "create-runow"],
   "homepage": "https://github.com/runowjs/runow#readme",
   "repository": {
     "type": "git",
