@@ -1,6 +1,6 @@
 {
   "name": "create-runow",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "type": "module",
   "author": "shulk",
   "license": "MIT",
@@ -8,8 +8,8 @@
     "node": "^18.0.0 || ^20.0.0 || >=22.0.0"
   },
   "bin": {
-    "runow": "index.js",
-    "rn": "index.js"
+    "create-runow": "index.js",
+    "runow": "index.js"
   },
   "files": [
     "index.js",
@@ -19,14 +19,21 @@
     "dev": "unbuild --stub",
     "build": "unbuild"
   },
-  "keywords": ["runow", "create-runow"],
+  "keywords": [
+    "runow",
+    "create-runow"
+  ],
   "homepage": "https://github.com/runowjs/runow#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/runowjs/runow.git"
+    "url": "git+https://github.com/runowjs/runow.git"
   },
   "description": "Create a javascript app and run now! It's quick.",
-  "dependencies": {
+  "devDependencies": {
+    "@types/cross-spawn": "^6.0.6",
+    "@types/degit": "^2.8.6",
+    "@types/minimist": "^1.2.5",
+    "@types/prompts": "^2.4.9",
     "@types/node": "^22.10.2",
     "cross-spawn": "^7.0.6",
     "degit": "^2.8.4",
@@ -34,16 +41,7 @@
     "ora": "^8.1.1",
     "picocolors": "^1.1.1",
     "prompts": "^2.4.2",
-    "shelljs": "^0.8.5",
+    "unbuild": "^3.0.1",
     "typescript": "^5.7.2"
-  },
-  "devDependencies": {
-    "@types/cross-spawn": "^6.0.6",
-    "@types/degit": "^2.8.6",
-    "@types/minimist": "^1.2.5",
-    "@types/prompts": "^2.4.9",
-    "prettier": "^3.4.2",
-    "prettier-plugin-organize-imports": "^4.1.0",
-    "unbuild": "^3.0.1"
   }
 }

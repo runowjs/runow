@@ -1,11 +1,10 @@
-import { defineBuildConfig } from 'unbuild';
+
+import { defineBuildConfig } from 'unbuild'
 
 export default defineBuildConfig({
   entries: ['src/index'],
-  declaration: true,
   clean: true,
   rollup: {
-    emitCJS: false,
     inlineDependencies: true,
     esbuild: {
       target: 'node18',
@@ -16,4 +15,4 @@ export default defineBuildConfig({
     // we can always use non-transpiled code since we support node 18+
     prompts: 'prompts/lib/index.js',
   },
-});
+})

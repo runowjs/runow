@@ -1,18 +1,16 @@
-#!/usr/bin/env node
-
 import spawn from 'cross-spawn';
 import degit from 'degit';
 import minimist from 'minimist';
-import * as fs from 'node:fs';
+import fs from 'node:fs';
 import path from 'node:path';
 import ora from 'ora';
-import colors, { reset } from 'picocolors';
+import colors from 'picocolors';
 import prompts from 'prompts';
 import { FRAMEWORKS, HELP_MESSAGE, TEMPLATES } from './constants';
 import { Framework } from './types';
 import { formatDir, isEmpty, removeDir } from './utils';
 
-const { blue, red, green } = colors;
+const { blue, red, green, reset } = colors;
 
 const argv = minimist<{
   template?: string;
