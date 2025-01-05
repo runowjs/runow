@@ -8,7 +8,7 @@ import colors from 'picocolors';
 import prompts from 'prompts';
 import { FRAMEWORKS, HELP_MESSAGE, TEMPLATES } from './constants';
 import { Framework } from './types';
-import { formatDir, isEmpty, removeDir } from './utils';
+import { formatDir, isEmpty, pkgFromUserAgent, removeDir } from './utils';
 
 const { blue, red, green, reset } = colors;
 
@@ -172,10 +172,13 @@ async function run() {
 
     spinner.text = 'Installing dependencies...';
 
-    const install = spawn('npm', ['install'], {
+    const pkgInfo = pkgFromUserAgent(process.env.npm_config_user_agent)
+    const pkgManager = pkgInfo ? pkgInfo.name : 'npm'
+
+    const install = spawn( pkgManager , ['install'], {
       cwd: targetDir,
-      stdio: 'pipe',
-      shell: true,
+      stdio: 'inherit',
+      // shell: true,
     });
 
     install.stdout?.on('data', (data) => {
@@ -202,7 +205,10 @@ async function run() {
             ),
           );
         }
-        console.log(green('npm run dev\n'));
+
+        const command = pkgManager === 'yarn' ? 'yarn dev\n' : `${pkgManager} run dev\n`
+
+        console.log(green(command));
         process.exit(0);
       } else {
         spinner.fail(`Failed to install dependencies (exit code: ${code})`);
