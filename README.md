@@ -7,7 +7,7 @@ Create a javascript app and run now! It's quick.
 
 [Docs](https://runow.dev/) •
 [NPM](https://www.npmjs.com/package/create-runow) •
-[Demos](https://demo.runow.dev) •
+[Changelog](https://github.com/runowjs/runow/blob/main/CHANGELOG.md) •
 [简体中文](https://github.com/runowjs/runow/blob/main/README-zh_CN.md)
 
 ### [_Getting Started!_](https://runow.dev/guide/getting-started)

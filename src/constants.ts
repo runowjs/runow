@@ -1,4 +1,4 @@
-import { Framework } from './types';
+import { Framework } from "./types";
 
 export const HELP_MESSAGE = `\
 Usage: create-runow [OPTION]... [DIRECTORY]
@@ -12,42 +12,46 @@ Options:
 
 export const FRAMEWORKS: Framework[] = [
   {
-    name: 'vanilla',
-    display: 'Vanilla',
+    name: "vanilla",
+    display: "Vanilla",
     templates: [],
   },
   {
-    name: 'react',
-    display: 'React',
+    name: "react",
+    display: "React",
     templates: [
       {
-        name: 'react-ts',
-        display: 'React + TypeScript',
+        name: "react-ts",
+        display: "React + TypeScript",
       },
       {
-        name: 'react-nextjs-nextui',
-        display: 'React + Next.js + NextUI',
+        name: "react-nextjs-nextui",
+        display: "React + Next.js + NextUI",
+      },
+      {
+        name: "react-antd",
+        display: "React + Antd",
       },
     ],
   },
   {
-    name: 'vue',
-    display: 'Vue',
+    name: "vue",
+    display: "Vue",
     templates: [],
   },
   {
-    name: 'angular',
-    display: 'Angular',
+    name: "angular",
+    display: "Angular",
     templates: [],
   },
   {
-    name: 'solid',
-    display: 'Solid',
+    name: "solid",
+    display: "Solid",
     templates: [],
   },
   {
-    name: 'svelte',
-    display: 'Svelte',
+    name: "svelte",
+    display: "Svelte",
     templates: [],
   },
 ];

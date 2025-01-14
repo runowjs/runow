@@ -7,7 +7,7 @@
 
 [文档](https://runow.dev/) •
 [NPM](https://www.npmjs.com/package/create-runow) •
-[示例](https://demo.runow.dev/) •
+[更新日志](https://github.com/runowjs/runow/blob/main/CHANGELOG.md) •
 [English](https://github.com/runowjs/runow/blob/main/README.md)
 
 ### [_快速开始!_](https://runow.dev/guide/getting-started)
