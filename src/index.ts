@@ -206,7 +206,15 @@ async function run() {
           );
         }
 
-        console.log(green(`${pkgManager} run dev\n`));
+        switch (pkgManager) {
+          case 'yarn':
+          case 'pnpm':
+            console.log(green(`${pkgManager} dev\n`));
+            break;
+          default:
+            console.log(green(`${pkgManager} run dev\n`));
+        }
+
         process.exit(0);
       } else {
         spinner.fail(`Failed to install dependencies (exit code: ${code})`);
