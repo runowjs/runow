@@ -206,7 +206,7 @@ async function run() {
           );
         }
 
-        const command = pkgManager === 'yarn' ? 'yarn dev\n' : `${pkgManager} run dev\n`
+        const command = pkgManager === 'npm' ? 'npm run dev\n' : `${pkgManager} dev\n`
 
         console.log(green(command));
         process.exit(0);
