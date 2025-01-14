@@ -206,9 +206,7 @@ async function run() {
           );
         }
 
-        const command = pkgManager === 'npm' ? 'npm run dev\n' : `${pkgManager} dev\n`
-
-        console.log(green(command));
+        console.log(green(`${pkgManager} run dev\n`));
         process.exit(0);
       } else {
         spinner.fail(`Failed to install dependencies (exit code: ${code})`);
