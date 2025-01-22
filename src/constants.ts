@@ -25,12 +25,16 @@ export const FRAMEWORKS: Framework[] = [
         display: "React + TypeScript",
       },
       {
+        name: "react-antd",
+        display: "React + Antd",
+      },
+      {
         name: "react-nextjs-nextui",
         display: "React + Next.js + NextUI",
       },
       {
-        name: "react-antd",
-        display: "React + Antd",
+        name: "react-nextjs-headlessui",
+        display: "React + Next.js + HeadlessUI",
       },
     ],
   },
