@@ -48,7 +48,7 @@ bun create runow your-app-name --template react-ts
 ## 模板
 
 - [x] React
-- [ ] Vue
+- [x] Vue
 - [ ] Angular
 - [ ] Svelte
 - [ ] Solid

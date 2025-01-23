@@ -41,7 +41,12 @@ export const FRAMEWORKS: Framework[] = [
   {
     name: "vue",
     display: "Vue",
-    templates: [],
+    templates: [
+      {
+        name: "vue-ts",
+        display: "Vue + TypeScript",
+      },
+    ],
   },
   {
     name: "angular",

@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.1.6](https://github.com/runowjs/runow/releases/tag/v0.1.6) (2025-01-23)
+
+🎉 Features:
+
+- 🆕 Vue + TypeScript
 
 ## [0.1.5](https://github.com/runowjs/runow/releases/tag/v0.1.5) (2025-01-22)
 
