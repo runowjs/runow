@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.7](https://github.com/runowjs/runow/releases/tag/v0.1.7) (2025-01-29)
+
+🎉 Features:
+
+- 🆕 Vue + Ant Design Vue
+- 🆕 React + Next.js + ShadcnUI
+
 ## [0.1.6](https://github.com/runowjs/runow/releases/tag/v0.1.6) (2025-01-23)
 
 🎉 Features:

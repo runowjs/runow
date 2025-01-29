@@ -36,6 +36,10 @@ export const FRAMEWORKS: Framework[] = [
         name: "react-nextjs-headlessui",
         display: "React + Next.js + HeadlessUI",
       },
+      {
+        name: "react-nextjs-shadcnui",
+        display: "React + Next.js + ShadcnUI",
+      },
     ],
   },
   {
@@ -45,6 +49,10 @@ export const FRAMEWORKS: Framework[] = [
       {
         name: "vue-ts",
         display: "Vue + TypeScript",
+      },
+      {
+        name: "vue-andtv",
+        display: "Vue + Ant Design Vue",
       },
     ],
   },
