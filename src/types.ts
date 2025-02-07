@@ -1,8 +1,16 @@
-export type Framework = {
-  name: string;
+export type UiType = {
   display: string;
-  templates: Array<{
-    name: string;
-    display: string;
-  }>;
-};
+  names: string[];
+  path: string
+}
+
+export type FrameworkType = {
+  display: string;
+  items: UiType[]
+}
+
+export type StackType = {
+  display: string;
+  items: FrameworkType[];
+  color: (str: string | number) => string
+}

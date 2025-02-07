@@ -6,11 +6,23 @@ import path from 'node:path';
 import ora from 'ora';
 import colors from 'picocolors';
 import prompts from 'prompts';
-import { FRAMEWORKS, HELP_MESSAGE, TEMPLATES } from './constants';
-import { Framework } from './types';
+import { FrameworkType, StackType, UiType } from './types';
 import { formatDir, isEmpty, pkgFromUserAgent, removeDir } from './utils';
+import templates from './templates';
 
-const { blue, red, green, reset } = colors;
+export const HELP_MESSAGE = `\
+Usage: create-runow [OPTION]... [DIRECTORY]
+
+Create a new Runow project in JavaScript or TypeScript.
+With no arguments, start the CLI in interactive mode.
+
+Options:
+  -t, --template NAME        use a specific template
+`;
+
+const { red, green, reset } = colors;
+
+const maps = templates.flatMap(f => f.items || []).flatMap(f => f.items || []).flatMap(f=> f.names || []);
 
 const argv = minimist<{
   template?: string;
@@ -42,7 +54,7 @@ async function run() {
   let targetDir = argvDir || defaultDir;
 
   let result: prompts.Answers<
-    'projectName' | 'overwrite' | 'template' | 'framework'
+    'projectName' | 'overwrite' | 'stack' | 'framework' | 'template'
   >;
 
   prompts.override({
@@ -93,33 +105,47 @@ async function run() {
         },
         {
           type:
-            argvTemplate && TEMPLATES.includes(argvTemplate) ? null : 'select',
-          name: 'framework',
+            argvTemplate && maps.includes(argvTemplate) ? null : 'select',
+          name: 'stack',
           message:
             typeof argvTemplate === 'string' &&
-            !TEMPLATES.includes(argvTemplate)
+            !maps.includes(argvTemplate)
               ? reset(
                   `"${argvTemplate}" isn't a valid template. Please choose from below: `,
                 )
-              : reset('Select a framework:'),
+              : reset('Select a stack:'),
           initial: 0,
-          choices: FRAMEWORKS.map((framework) => {
+          choices: templates.map((stack) => {
+            const render = stack.color
             return {
-              title: blue(framework.display || framework.name),
-              value: framework,
+              title: render(stack.display),
+              value: stack,
             };
           }),
         },
         {
-          type: (framework: Framework | /* package name */ string) =>
+          type: (stack: StackType | /* package name */ string) =>
+            typeof stack === 'object' ? 'select' : null,
+          name: 'framework',
+          message: reset('Select a framework:'),
+          choices: (stack: StackType) =>
+            stack.items.map((framework) => {
+              return {
+                title: framework.display,
+                value: framework,
+              };
+            }),
+        },
+        {
+          type: (framework: FrameworkType | /* package name */ string) =>
             typeof framework === 'object' ? 'select' : null,
           name: 'template',
-          message: reset('Select a template:'),
-          choices: (framework: Framework) =>
-            framework.templates.map((template) => {
+          message: reset('Select a UI:'),
+          choices: (framework: FrameworkType) =>
+            framework.items.map((ui) => {
               return {
-                title: blue(template.display || template.name),
-                value: template.name,
+                title: ui.display,
+                value: ui,
               };
             }),
         },
@@ -146,13 +172,24 @@ async function run() {
     removeDir(root);
   }
 
-  const templateName = template || argvTemplate;
+  let targetTemplate: UiType | undefined
+
+  if (template) {
+    targetTemplate = template
+  } else {
+    targetTemplate = templates.flatMap(f=> f.items || []).flatMap(f=> f.items || []).find(f=>f.names.includes(argvTemplate))
+  }
+
+  if (!targetTemplate) {
+    console.log(red('No corresponding template found, it may not have been published or taken down!'))
+    return;
+  }
 
   const repo =
-    'https://github.com/runowjs/templates/' + templateName.replace('-', '/'); // react-ts => react/ts
+    'https://github.com/runowjs/templates/' + targetTemplate.path;
 
   const spinner = ora(
-    `Cloning ${templateName} template into ${templateDir}...`,
+    `Cloning ${targetTemplate.names[0]} template into ${templateDir}...`,
   ).start();
 
   const emitter = degit(repo, {

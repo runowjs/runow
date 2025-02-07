@@ -22,27 +22,27 @@ $ npm create runow@latest
 
 然后按提示操作!
 
-您还可以通过其他命令行选项直接指定项目名称和要使用的模板。例如，要搭建 React + Typescript 项目的基架，请运行：
+您还可以通过其他命令行选项直接指定项目名称和要使用的模板。例如，要搭建 React + Vite 项目的基架，请运行：
 
 使用 NPM
 ```bash
 # npm 7+，需要添加额外的 --：
-npm create runow@latest my-app -- --template react-ts
+npm create runow@latest my-app -- --template react-vite
 ```
 
 使用 Yarn
 ```bash
-yarn create runow your-app-name --template react-ts
+yarn create runow your-app-name --template react-vite
 ```
 
 使用 PNPM
 ```bash
-pnpm create runow your-app-name --template react-ts
+pnpm create runow your-app-name --template react-vite
 ```
 
 使用 Bun
 ```bash
-bun create runow your-app-name --template react-ts
+bun create runow your-app-name --template react-vite
 ```
 
 ## 模板
@@ -52,6 +52,9 @@ bun create runow your-app-name --template react-ts
 - [ ] Angular
 - [ ] Svelte
 - [ ] Solid
+- [ ] Astro
 - [ ] Vanilla
+- [ ] Cross
+
 
 ...

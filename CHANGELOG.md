@@ -1,5 +1,16 @@
 # Changelog
 
+
+## [0.2.0](https://github.com/runowjs/runow/releases/tag/v0.2.0) (2025-02-07)
+
+📣 New version
+
+- Refactoring template directory for more detailed classification
+- Support more technology stacks
+- Planning common UI frameworks
+
+Please continue to follow!
+
 ## [0.1.7](https://github.com/runowjs/runow/releases/tag/v0.1.7) (2025-01-29)
 
 🎉 Features:
