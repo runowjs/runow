@@ -6,7 +6,7 @@ import path from 'node:path';
 import ora from 'ora';
 import colors from 'picocolors';
 import prompts from 'prompts';
-import { FrameworkType, StackType, UiType } from './types';
+import { FrameworkType, StackType, UikitType } from './types';
 import { formatDir, isEmpty, pkgFromUserAgent, removeDir } from './utils';
 import templates from './templates';
 
@@ -54,7 +54,7 @@ async function run() {
   let targetDir = argvDir || defaultDir;
 
   let result: prompts.Answers<
-    'projectName' | 'overwrite' | 'stack' | 'framework' | 'template'
+    'projectName' | 'overwrite' | 'stack' | 'framework' | 'uikit'
   >;
 
   prompts.override({
@@ -139,8 +139,8 @@ async function run() {
         {
           type: (framework: FrameworkType | /* package name */ string) =>
             typeof framework === 'object' ? 'select' : null,
-          name: 'template',
-          message: reset('Select a UI:'),
+          name: 'uikit',
+          message: reset('Select a uikit:'),
           choices: (framework: FrameworkType) =>
             framework.items.map((ui) => {
               return {
@@ -161,7 +161,7 @@ async function run() {
     return;
   }
 
-  const { overwrite, template } = result;
+  const { overwrite, uikit } = result;
 
   const root = path.join(cwd, targetDir);
 
@@ -172,10 +172,10 @@ async function run() {
     removeDir(root);
   }
 
-  let targetTemplate: UiType | undefined
+  let targetTemplate: UikitType | undefined
 
-  if (template) {
-    targetTemplate = template
+  if (uikit) {
+    targetTemplate = uikit
   } else {
     targetTemplate = templates.flatMap(f=> f.items || []).flatMap(f=> f.items || []).find(f=>f.names.includes(argvTemplate))
   }

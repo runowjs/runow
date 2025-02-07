@@ -1,4 +1,4 @@
-export type UiType = {
+export type UikitType = {
   display: string;
   names: string[];
   path: string
@@ -6,7 +6,7 @@ export type UiType = {
 
 export type FrameworkType = {
   display: string;
-  items: UiType[]
+  items: UikitType[]
 }
 
 export type StackType = {
