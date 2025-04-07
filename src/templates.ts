@@ -79,7 +79,7 @@ const templates: StackType[] = [
           {
             display: 'Tailwind CSS',
             names: ['react-next-tailwindcss', 'react-next-tw'],
-            path: 'react/next/tailwind-css'
+            path: 'react/next/tailwindcss'
           },
           {
             display: 'Uno CSS',
