@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.2.2](https://github.com/runowjs/runow/releases/tag/v0.2.2) (2025-04-08)
+
+🎉 Features:
+
+- 🆕 React + Next.js + Tailwindcss
+- 🆕 React + Next.js + Blank
+- 🆙 React + Next.js + ShadcnUI
+
+🐞 Fix:
+
+- Template path error
+
 
 ## [0.2.0](https://github.com/runowjs/runow/releases/tag/v0.2.0) (2025-02-07)
 
