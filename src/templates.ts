@@ -19,17 +19,17 @@ const templates: StackType[] = [
           {
             display: 'Tailwind CSS',
             names: ['react-vite-tailwindcss', 'react-vite-tw'],
-            path: 'react/vite/tailwind-css'
+            path: 'react/vite/tailwindcss'
           },
           {
             display: 'Uno CSS',
             names: ['react-vite-unocss', 'react-vite-uno'],
-            path: 'react/vite/uno-css'
+            path: 'react/vite/unocss'
           },
           {
             display: 'Headless UI',
             names: ['react-vite-headlessui'],
-            path: 'react/vite/headless-ui'
+            path: 'react/vite/headlessui'
           },
           {
             display: 'Ant Design',
@@ -39,17 +39,17 @@ const templates: StackType[] = [
           {
             display: 'Next UI',
             names: ['react-vite-nextui'],
-            path: 'react/vite/next-ui'
+            path: 'react/vite/nextui'
           },
           {
             display: 'Shadcn UI',
             names: ['react-vite-shadcnui'],
-            path: 'react/vite/shadcn-ui'
+            path: 'react/vite/shadcnui'
           },
           {
             display: 'Charka UI',
             names: ['react-vite-charkaui'],
-            path: 'react/vite/charka-ui'
+            path: 'react/vite/charkaui'
           },
           {
             display: 'MUI',
@@ -59,7 +59,7 @@ const templates: StackType[] = [
           {
             display: 'Radix UI',
             names: ['react-vite-radixui'],
-            path: 'react/vite/radix-ui'
+            path: 'react/vite/radixui'
           },
           {
             display: 'Arco Design',
@@ -84,12 +84,12 @@ const templates: StackType[] = [
           {
             display: 'Uno CSS',
             names: ['react-next-unocss', 'react-next-uno'],
-            path: 'react/next/uno-css'
+            path: 'react/next/unocss'
           },
           {
             display: 'Headless UI',
             names: ['react-next-headlessui'],
-            path: 'react/next/headless-ui'
+            path: 'react/next/headlessui'
           },
           {
             display: 'Ant Design',
@@ -99,17 +99,17 @@ const templates: StackType[] = [
           {
             display: 'Next UI',
             names: ['react-next-nextui'],
-            path: 'react/next/next-ui'
+            path: 'react/next/nextui'
           },
           {
             display: 'Shadcn UI',
             names: ['react-next-shadcnui'],
-            path: 'react/next/shadcn-ui'
+            path: 'react/next/shadcnui'
           },
           {
             display: 'Charka UI',
             names: ['react-next-charkaui'],
-            path: 'react/next/charka-ui'
+            path: 'react/next/charkaui'
           },
           {
             display: 'MUI',
@@ -119,7 +119,7 @@ const templates: StackType[] = [
           {
             display: 'Radix UI',
             names: ['react-next-radixui'],
-            path: 'react/next/radix-ui'
+            path: 'react/next/radixui'
           },
           {
             display: 'Arco Design',
@@ -139,17 +139,17 @@ const templates: StackType[] = [
           {
             display: 'Tailwind CSS',
             names: ['react-remix-tailwindcss', 'react-remix-tw'],
-            path: 'react/remix/tailwind-css'
+            path: 'react/remix/tailwindcss'
           },
           {
             display: 'Uno CSS',
             names: ['react-remix-unocss', 'react-remix-uno'],
-            path: 'react/remix/uno-css'
+            path: 'react/remix/unocss'
           },
           {
             display: 'Headless UI',
             names: ['react-remix-headlessui'],
-            path: 'react/remix/headless-ui'
+            path: 'react/remix/headlessui'
           },
           {
             display: 'Ant Design',
@@ -159,17 +159,17 @@ const templates: StackType[] = [
           {
             display: 'Next UI',
             names: ['react-remix-nextui'],
-            path: 'react/remix/next-ui'
+            path: 'react/remix/nextui'
           },
           {
             display: 'Shadcn UI',
             names: ['react-remix-shadcnui'],
-            path: 'react/remix/shadcn-ui'
+            path: 'react/remix/shadcnui'
           },
           {
             display: 'Charka UI',
             names: ['react-remix-charkaui'],
-            path: 'react/remix/charka-ui'
+            path: 'react/remix/charkaui'
           },
           {
             display: 'MUI',
@@ -179,7 +179,7 @@ const templates: StackType[] = [
           {
             display: 'Radix UI',
             names: ['react-remix-radixui'],
-            path: 'react/remix/radix-ui'
+            path: 'react/remix/radixui'
           },
           {
             display: 'Arco Design',
@@ -205,22 +205,22 @@ const templates: StackType[] = [
           {
             display: 'Tailwind CSS',
             names: ['vue-vite-tailwindcss', 'vue-vite-tw'],
-            path: 'vue/vite/tailwind-css'
+            path: 'vue/vite/tailwindcss'
           },
           {
             display: 'Uno CSS',
             names: ['vue-vite-unocss', 'vue-vite-uno'],
-            path: 'vue/vite/uno-css'
+            path: 'vue/vite/unocss'
           },
           {
             display: 'Headless UI',
             names: ['vue-vite-headlessui'],
-            path: 'vue/vite/headless-ui'
+            path: 'vue/vite/headlessui'
           },
           {
             display: 'Nuxt UI',
             names: ['vue-vite-nuxtui'],
-            path: 'vue/vite/nuxt-ui'
+            path: 'vue/vite/nuxtui'
           },
           {
             display: 'Ant Design Vue',
@@ -230,12 +230,12 @@ const templates: StackType[] = [
           {
             display: 'Element UI',
             names: ['vue-vite-elementui'],
-            path: 'vue/vite/element-ui'
+            path: 'vue/vite/elementui'
           },
           {
             display: 'Naive UI',
             names: ['vue-vite-naiveui'],
-            path: 'vue/vite/naive-ui'
+            path: 'vue/vite/naiveui'
           },
           {
             display: 'Vuetify',
@@ -245,7 +245,7 @@ const templates: StackType[] = [
           {
             display: 'Reka UI',
             names: ['vue-vite-rekaui'],
-            path: 'vue/vite/reka-ui'
+            path: 'vue/vite/rekaui'
           },
           {
             display: 'Arco Design',
@@ -265,22 +265,22 @@ const templates: StackType[] = [
           {
             display: 'Tailwind CSS',
             names: ['vue-nuxt-tailwindcss', 'vue-nuxt-tw'],
-            path: 'vue/nuxt/tailwind-css'
+            path: 'vue/nuxt/tailwindcss'
           },
           {
             display: 'Uno CSS',
             names: ['vue-nuxt-unocss', 'vue-nuxt-uno'],
-            path: 'vue/nuxt/uno-css'
+            path: 'vue/nuxt/unocss'
           },
           {
             display: 'Headless UI',
             names: ['vue-nuxt-headlessui'],
-            path: 'vue/nuxt/headless-ui'
+            path: 'vue/nuxt/headlessui'
           },
           {
             display: 'Nuxt UI',
             names: ['vue-nuxt-nuxtui'],
-            path: 'vue/nuxt/nuxt-ui'
+            path: 'vue/nuxt/nuxtui'
           },
           {
             display: 'Ant Design Vue',
@@ -290,12 +290,12 @@ const templates: StackType[] = [
           {
             display: 'Element UI',
             names: ['vue-nuxt-elementui'],
-            path: 'vue/nuxt/element-ui'
+            path: 'vue/nuxt/elementui'
           },
           {
             display: 'Naive UI',
             names: ['vue-nuxt-naiveui'],
-            path: 'vue/nuxt/naive-ui'
+            path: 'vue/nuxt/naiveui'
           },
           {
             display: 'Vuetify',
@@ -305,7 +305,7 @@ const templates: StackType[] = [
           {
             display: 'Reka UI',
             names: ['vue-nuxt-rekaui'],
-            path: 'vue/nuxt/reka-ui'
+            path: 'vue/nuxt/rekaui'
           },
           {
             display: 'Arco Design',
